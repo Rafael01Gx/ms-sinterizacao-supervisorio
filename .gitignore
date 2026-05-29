@@ -1,0 +1,63 @@
+# Arquivos de Build e Dependências (Maven/Gradle)
+target/
+.gradle/
+build/
+out/
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+logs/
+
+# Arquivos de IDE
+# IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+nbproject/
+private/
+
+# VS Code
+.vscode/
+
+# Arquivos de Sistema Operacional
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Arquivos temporários e de crash
+*.tmp
+*~
+hs_err_pid*
+
+# Arquivos de configuração local e segredos
+# Nunca comite arquivos com senhas ou chaves de API
+application-local.properties
+application-local.yml
+*.env
+*.p12
+*.jks
+
+# Outros
+.mvn/
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next

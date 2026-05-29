@@ -1,0 +1,94 @@
+tags:
+  process:
+    # --- VARIÁVEIS ANALÓGICAS (Leitura de Sensores) ---
+    temperatura_refratario: "iTIT_01_Refratario_PV"     # REAL - Temp. Atual do Refratário
+    tempo_sinterizacao: "Min_TempoSinterizacao"         # REAL - Tempo mínimo de sinterização
+    temperatura_ignicao: "iTIT_02_Ignicao_PV"           # REAL - Temp. Atual de Ignição
+    temperatura_cx_vento: "iTIT_03_Cx_Vento_PV"         # REAL - Temp. Atual da Caixa de Vento
+    temperatura_cx_vento_max: "Temp_CxVento_Max"        # REAL - Temp. Máxima da Caixa de Vento
+    pressao_glp: "iPIT_01_GLP_PV"                       # REAL - Pressão Atual de GLP
+    vazao_glp: "iFIT_01_GLP_PV"                         # REAL - Vazão Atual de GLP
+    pressao_gases: "iPIT_02_Gases_PV"                   # REAL - Pressão Atual de Gases
+    vazao_ar: "iFIT_02_Ar_PV"                           # REAL - Vazão Atual de Ar
+    tempo_parcial_sinterizacao: "Parcial_TempoSinterizacao" # REAL - Tempo parcial
+
+    # --- STATUS E ENTRADAS DIGITAIS (Sensores/Bits) ---
+    valvula_glp_fechada: "iSV_GLP_Closed"               # BOOL
+    valvula_glp_aberta: "iSV_GLP_Opened"                # BOOL
+    valvula_01_fechada: "iSV_01_Closed"                 # BOOL
+    valvula_01_aberta: "iSV_01_Opened"                  # BOOL
+    valvula_02_fechada: "iSV_02_Closed"                 # BOOL
+    valvula_02_aberta: "iSV_02_Opened"                  # BOOL
+    valvula_cx_vento_fechada: "iCx_Vento_Closed"        # BOOL
+    valvula_cx_vento_aberta: "iCx_Vento_Opened"         # BOOL
+    queimador_piloto_aceso: "iZS_Queimador_Piloto"      # BOOL
+    queimador_principal_aceso: "iZS_Queimador_Principal" # BOOL
+    piloto_pronto: "iPiloto_Pronto"                     # BOOL
+    emergencia_acionada: "iZS_Emerg"                    # BOOL
+    soprador_ligado: "iZS_Soprador"                     # BOOL
+    defeito_geral: "iDefeito_Bool"                      # BOOL
+    fim_de_curso_posicao: "iFimDeCurso_Posicao"         # BOOL
+    teste_iniciado: "Teste_Iniciado"                    # BOOL
+    teste_ihm: "Teste_IHM"                              # BOOL
+    trava_supervisorio: "trava_supervi"                 # BOOL
+    inicio_ihm: "Inicio_HMI"                            # BOOL
+    subindo: "Subindo"                                  # BOOL
+    descendo: "Descendo"                                # BOOL
+    hab_descendo: "Hab_Descendo"                        # BOOL
+    final_queima: "Final_Queima"                        # BOOL
+    selo_tempo_sinterizacao: "Selo_TempoSinterizacao"   # BOOL
+    emergencia_alarme1: "EMERGENCIA_ALARME1"            # BOOL
+    o_reserva_bool: "oReserva_Bool"                     # BOOL
+    i_reserva_bool: "iReserva_Bool"                     # BOOL
+    teste: "teste"                                      # BOOL
+    
+    # --- SAÍDAS E AÇÕES GERAIS ---
+    glp_fechada: "oGLP_Fechada"                         # BOOL
+    sv_01_duas_saidas: "SV_01_DuasSaidas"               # BOOL
+    sv_02_duas_saidas: "SV_02_DuasSaidas"               # BOOL
+    aux_a_sv_02: "AUX_A_SV_02"                          # BOOL
+    aux_f_sv_02: "AUX_F_SV_02"                          # BOOL
+    cx_vento_out: "oCx_Vento_Out"                       # BOOL
+    piloto_acesso: "oPiloto_Acesso"                     # BOOL
+
+    # --- COMANDOS E SAÍDAS DIGITAIS (Escrita/Ações) ---
+    acionar_ignicao: "oAciona_Ignicao"                  # BOOL
+    acionar_soprador: "oAciona_Soprador"                # BOOL
+    abrir_piloto_glp: "oGLP_Piloto_Abrir"               # BOOL
+    abrir_glp_principal: "oGLP_Principal_Abrir"         # BOOL
+    abrir_valvula_01: "oSV_01_Abrir"                    # BOOL
+    fechar_valvula_01: "oSV_01_Fechar"                  # BOOL
+    abrir_valvula_02: "oSV_02_Abrir"                    # BOOL
+    fechar_valvula_02: "oSV_02_Fechar"                  # BOOL
+    reset_rele: "oReset_Rele"                           # BOOL
+    reset_ihm: "Reset_IHM"                              # BOOL
+    reset_seq: "Reset_Seq"                              # BOOL
+    iniciar_queima: "Inicia_Queima"                     # BOOL
+
+    # --- TIMERS ---
+    tempo_sinterizacao_acumulado: "TempoSinterizacao.ACC" # DINT
+    tempo_sinterizacao_pronto: "TempoSinterizacao.DN"   # BOOL
+    tempo_sinterizacao_zzzz_acc: "TempoSinterizacaozzzz.ACC" # DINT
+    tempo_resfriamento_acc: "TempoResfriamento.ACC"     # DINT
+    min_tempo_resfriamento: "Min_TempoResfriamento"     # REAL
+    aviso_120s_ihm_acc: "Aviso_120s_IHM.ACC"            # DINT
+    aviso_120s_ihm_dn: "Aviso_120s_IHM.DN"              # BOOL
+    aviso_180s_ihm_acc: "Aviso_180s_IHM.ACC"            # DINT
+    aviso_180s_ihm_dn: "Aviso_180s_IHM.DN"              # BOOL
+    partida_chama_principal_acc: "Partida_ChamaPrincipal_Timer.ACC" # DINT
+    desliga_piloto_acc: "Desliga_PilotoTimer.ACC"       # DINT
+    subindo_timer_acc: "Subindo_Timer.ACC"              # DINT
+    descendo_timer_acc: "Descendo_Timer.ACC"            # DINT
+    fim_de_curso_posicao_timer_acc: "FimDeCurso_Posicao_Timer.ACC" # DINT
+    estabilizacao_500_timer_acc: "Estabilizacao_500_Timer.ACC" # DINT
+    tmr_abre_sv_002_acc: "TMR_ABRE_SV_002.ACC"          # DINT
+    tmr_f_sv_02_acc: "TMR_F_SV_02.ACC"                  # DINT
+    tmr_a_sv_02_acc: "TMR_A_SV_02.ACC"                  # DINT
+    tmr_pulso_atualiza_temp_acc: "TMR_PULSO_ATUALIZA_TEMP.ACC" # DINT
+
+  alarm:
+    # --- ALARMES E STATUS GERAIS ---
+    alarmes_consolidados: "ALARMES_JUNTOS"              # DINT
+    status_consolidados: "STATUS_JUNTOS"                # DINT
+    variaveis_juntas: "VARIAVEIS_JUNTAS"                # DINT
+    status: "Status"                                    # DINT
