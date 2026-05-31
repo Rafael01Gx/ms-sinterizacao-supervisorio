@@ -1,0 +1,956 @@
+[
+  {
+    "id": "ui_tab_piloto",
+    "type": "ui_tab",
+    "name": "Queima Piloto",
+    "icon": "fire",
+    "order": 1,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "grp_controle",
+    "type": "ui_group",
+    "name": "Controle",
+    "tab": "ui_tab_piloto",
+    "order": 1,
+    "disp": true,
+    "width": "12",
+    "collapse": false
+  },
+  {
+    "id": "grp_status",
+    "type": "ui_group",
+    "name": "Status Saídas / Válvulas",
+    "tab": "ui_tab_piloto",
+    "order": 2,
+    "disp": true,
+    "width": "12",
+    "collapse": false
+  },
+  {
+    "id": "grp_analogicos",
+    "type": "ui_group",
+    "name": "Analógicos",
+    "tab": "ui_tab_piloto",
+    "order": 3,
+    "disp": true,
+    "width": "12",
+    "collapse": false
+  },
+  {
+    "id": "grp_alarmes",
+    "type": "ui_group",
+    "name": "Alarmes",
+    "tab": "ui_tab_piloto",
+    "order": 4,
+    "disp": true,
+    "width": "12",
+    "collapse": false
+  },
+  {
+    "id": "grp_log",
+    "type": "ui_group",
+    "name": "Log da Sequência",
+    "tab": "ui_tab_piloto",
+    "order": 5,
+    "disp": true,
+    "width": "12",
+    "collapse": false
+  },
+  {
+    "id": "tab_simulacao",
+    "type": "tab",
+    "label": "Simulação / Lógica",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "tab_integracao",
+    "type": "tab",
+    "label": "Integração CLP",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "eip_cfg_plc",
+    "type": "eth-ip endpoint",
+    "name": "PLC Simulador",
+    "host": "192.168.250.10",
+    "port": "44818",
+    "slot": "0",
+    "cycletime": "500",
+    "timeout": "10",
+    "retryDelay": "3000",
+    "optimizeRead": true
+  },
+  {
+    "id": "read_inject",
+    "type": "inject",
+    "z": "tab_integracao",
+    "name": "Poll 1s",
+    "repeat": "1",
+    "once": true,
+    "onceDelay": 2,
+    "payload": "{}",
+    "payloadType": "json",
+    "x": 120,
+    "y": 80,
+    "wires": [
+      [
+        "read_fn"
+      ]
+    ]
+  },
+  {
+    "id": "read_batch_fn",
+    "type": "function",
+    "z": "tab_integracao",
+    "name": "Prepara lotes de leitura",
+    "func": "\n// Envia uma mensagem por tag para o nó eth-ip\nvar tags_bool = [\"iSV_GLP_Closed\", \"iSV_GLP_Opened\", \"iZS_Queimador_Piloto\", \"iZS_Queimador_Principal\", \"iZS_Emerg\", \"iZS_Soprador\", \"iSV_01_Closed\", \"iSV_01_Opened\", \"iSV_02_Closed\", \"iSV_02_Opened\", \"iCx_Vento_Closed\", \"iCx_Vento_Opened\", \"iPiloto_Pronto\", \"iDefeito_Bool\", \"iReserva_Bool\", \"iFimDeCurso_Posicao\", \"oAciona_Ignicao\", \"oAciona_Soprador\", \"oPiloto_Acesso\", \"oGLP_Piloto_Abrir\", \"oGLP_Principal_Abrir\", \"oGLP_Fechada\", \"oSV_01_Abrir\", \"oSV_01_Fechar\", \"oSV_02_Abrir\", \"oSV_02_Fechar\", \"oCx_Vento_Out\", \"oReset_Rele\", \"Inicio_HMI\", \"Reset_IHM\", \"Teste_IHM\", \"Inicia_Queima\", \"Final_Queima\", \"Descendo\", \"Subindo\", \"Hab_Descendo\", \"EMERGENCIA_ALARME1\", \"Reset_Seq\", \"trava_supervi\", \"Teste_Iniciado\", \"SV_01_DuasSaidas\", \"SV_02_DuasSaidas\", \"Selo_TempoSinterizacao\", \"AUX_A_SV_02\", \"AUX_F_SV_02\", \"teste\"];\nvar tags_real = [\"iTIT_01_Refratario_PV\", \"iTIT_02_Ignicao_PV\", \"iTIT_03_Cx_Vento_PV\", \"iFIT_01_GLP_PV\", \"iFIT_01_GLP_Val\", \"iFIT_02_Ar_PV\", \"iPIT_01_GLP_PV\", \"iPIT_02_Gases_PV\", \"oReserva_Real\", \"iReserva_Real\", \"Temp_CxVento_Max\", \"Min_TempoResfriamento\", \"Min_TempoSinterizacao\", \"Parcial_TempoSinterizacao\"];\nvar msgs = [];\ntags_bool.forEach(function(t){ msgs.push({topic: t, tag: t, datatype:'BOOL'}); });\ntags_real.forEach(function(t){ msgs.push({topic: t, tag: t, datatype:'REAL'}); });\nreturn [msgs];\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 340,
+    "y": 80,
+    "wires": [
+      [
+        "eip_read_node"
+      ]
+    ]
+  },
+  {
+    "id": "eip_read_node",
+    "type": "eth-ip in",
+    "z": "tab_integracao",
+    "name": "Lê CLP Simulador",
+    "controller": "eip_cfg_plc",
+    "program": "",
+    "x": 580,
+    "y": 80,
+    "wires": [
+      [
+        "accumulate_fn"
+      ]
+    ]
+  },
+  {
+    "id": "accumulate_fn",
+    "type": "function",
+    "z": "tab_integracao",
+    "name": "Acumula leituras no contexto",
+    "func": "\nvar plc = flow.get('plc_tags') || {};\n// Cada msg chega com msg.topic = nome da tag, msg.payload = valor\nif (msg.topic && msg.payload !== undefined) {\n    plc[msg.topic] = msg.payload;\n}\nflow.set('plc_tags', plc);\n// Dispara update do dashboard a cada ciclo completo\nvar total = 60;\nvar count = (flow.get('read_count') || 0) + 1;\nflow.set('read_count', count);\nif (count % total === 0) {\n    return {payload: plc, topic: 'full_update'};\n}\nreturn null;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 820,
+    "y": 80,
+    "wires": [
+      [
+        "dashboard_update_fn",
+        "seq_logic_fn"
+      ]
+    ]
+  },
+  {
+    "id": "seq_logic_fn",
+    "type": "function",
+    "z": "tab_integracao",
+    "name": "Máquina de Estados (dados reais CLP)",
+    "func": "\nvar plc = msg.payload || {};\nvar state = flow.get('seq_state') || {\n    estado: 'IDLE', step: 0, timer: 0,\n    log: [], prev_estado: ''\n};\n\nfunction log(txt) {\n    var t = new Date().toLocaleTimeString('pt-BR');\n    state.log.unshift('['+t+'] '+txt);\n    if(state.log.length > 30) state.log.pop();\n}\n\nvar writes = {}; // tags a escrever de volta no CLP\n\n// ── Emergência sempre monitorada ────────────────────────────────────────────\nif (plc.iZS_Emerg === true && state.estado !== 'FALHA' && state.estado !== 'IDLE') {\n    log('!! EMERGÊNCIA: iZS_Emerg ativado - fechando tudo');\n    writes.oSV_01_Abrir = false; writes.oSV_01_Fechar = true;\n    writes.oSV_02_Abrir = false; writes.oSV_02_Fechar = true;\n    writes.oGLP_Piloto_Abrir = false; writes.oGLP_Principal_Abrir = false;\n    writes.oAciona_Ignicao = false;\n    writes.EMERGENCIA_ALARME1 = true;\n    state.estado = 'FALHA'; state.step = 0; state.timer = 0;\n}\n\n// ── Máquina de estados ───────────────────────────────────────────────────────\nswitch(state.estado) {\n\n  case 'IDLE':\n    if (plc.Inicio_HMI === true || plc.Inicia_Queima === true) {\n        if (plc.iDefeito_Bool === true) {\n            log('BLOQUEIO: Defeito ativo - corrija antes de iniciar');\n            writes.EMERGENCIA_ALARME1 = true;\n            break;\n        }\n        state.estado = 'PRE_PURGA'; state.step = 0; state.timer = 0;\n        log('INÍCIO: Sequência de queima piloto iniciada');\n    }\n    break;\n\n  case 'PRE_PURGA':\n    if (state.step === 0) {\n        writes.oAciona_Soprador = true;\n        writes.oCx_Vento_Out = true;\n        writes.oSV_01_Fechar = true; writes.oSV_01_Abrir = false;\n        writes.oSV_02_Fechar = true; writes.oSV_02_Abrir = false;\n        log('PURGA: Soprador ligado, aguardando caixa de vento...');\n        state.step = 1; state.timer = 0;\n    }\n    else if (state.step === 1) {\n        state.timer++;\n        // Aguarda feedback real da caixa de vento (ou timeout 10s)\n        if (plc.iCx_Vento_Opened === true || state.timer >= 10) {\n            if (!plc.iCx_Vento_Opened) log('AVISO: Timeout caixa de vento - continuando purga');\n            else log('PURGA: Caixa de vento ABERTA confirmada');\n            state.step = 2; state.timer = 0;\n        }\n    }\n    else if (state.step === 2) {\n        state.timer++;\n        if (state.timer % 5 === 0) log('PURGA: ' + state.timer + 's / 30s');\n        if (state.timer >= 30) {\n            state.estado = 'ABRE_SV_GLP'; state.step = 0; state.timer = 0;\n            log('PURGA: Concluída (30s)');\n        }\n    }\n    break;\n\n  case 'ABRE_SV_GLP':\n    if (state.step === 0) {\n        writes.oGLP_Fechada = false;\n        log('GLP: Abrindo válvula geral GLP...');\n        state.step = 1; state.timer = 0;\n    }\n    else if (state.step === 1) {\n        state.timer++;\n        if (plc.iSV_GLP_Opened === true || state.timer >= 8) {\n            if (!plc.iSV_GLP_Opened) log('AVISO: Timeout iSV_GLP_Opened');\n            else log('GLP: Válvula geral ABERTA - PIT-01: ' + (plc.iPIT_01_GLP_PV||0).toFixed(2) + ' bar');\n            state.estado = 'ABRE_SV_PILOTO'; state.step = 0; state.timer = 0;\n        }\n    }\n    break;\n\n  case 'ABRE_SV_PILOTO':\n    if (state.step === 0) {\n        writes.oSV_01_Abrir = true; writes.oSV_01_Fechar = false;\n        writes.oGLP_Piloto_Abrir = true;\n        log('SV-01: Abrindo válvula piloto GLP...');\n        state.step = 1; state.timer = 0;\n    }\n    else if (state.step === 1) {\n        state.timer++;\n        if (plc.iSV_01_Opened === true || state.timer >= 8) {\n            if (!plc.iSV_01_Opened) log('AVISO: Timeout iSV_01_Opened');\n            else log('SV-01: ABERTA - FIT-01: ' + (plc.iFIT_01_GLP_PV||0).toFixed(1) + ' Nm³/h');\n            state.estado = 'IGNICAO'; state.step = 0; state.timer = 0;\n        }\n    }\n    break;\n\n  case 'IGNICAO':\n    if (state.step === 0) {\n        writes.oAciona_Ignicao = true;\n        writes.oPiloto_Acesso = true;\n        log('IGNIÇÃO: Transformador ativado - aguardando chama...');\n        state.step = 1; state.timer = 0;\n    }\n    else if (state.step === 1) {\n        state.timer++;\n        if (plc.iZS_Queimador_Piloto === true) {\n            writes.oAciona_Ignicao = false;\n            log('IGNIÇÃO: ✓ CHAMA PILOTO CONFIRMADA (iZS_Queimador_Piloto=TRUE) - TIT-02: ' + (plc.iTIT_02_Ignicao_PV||0).toFixed(0) + '°C');\n            state.estado = 'PILOTO_ESTAVEL'; state.step = 0; state.timer = 0;\n        } else if (state.timer >= 10) {\n            // Falha de ignição\n            writes.oAciona_Ignicao = false;\n            writes.oSV_01_Abrir = false; writes.oSV_01_Fechar = true;\n            writes.oGLP_Piloto_Abrir = false;\n            writes.EMERGENCIA_ALARME1 = true;\n            log('FALHA IGNIÇÃO: iZS_Queimador_Piloto não confirmado em 10s - EMERGÊNCIA');\n            state.estado = 'FALHA'; state.step = 0; state.timer = 0;\n        } else if (state.timer % 2 === 0) {\n            log('IGNIÇÃO: Tentando... ' + state.timer + 's/10s | TIT-02: ' + (plc.iTIT_02_Ignicao_PV||0).toFixed(0) + '°C');\n        }\n    }\n    break;\n\n  case 'PILOTO_ESTAVEL':\n    state.timer++;\n    if (state.timer % 5 === 0) {\n        log('PILOTO OK: TIT-01=' + (plc.iTIT_01_Refratario_PV||0).toFixed(0) + '°C | TIT-02=' + (plc.iTIT_02_Ignicao_PV||0).toFixed(0) + '°C');\n    }\n    // Verifica se piloto apagou\n    if (plc.iZS_Queimador_Piloto === false && state.timer > 3) {\n        log('FALHA: Chama piloto perdida!');\n        writes.oGLP_Piloto_Abrir = false;\n        writes.oSV_01_Abrir = false; writes.oSV_01_Fechar = true;\n        writes.EMERGENCIA_ALARME1 = true;\n        state.estado = 'FALHA'; state.step = 0; state.timer = 0;\n        break;\n    }\n    // Abre principal quando refratário >= 300°C ou comando forçado\n    if ((plc.iTIT_01_Refratario_PV >= 300) || plc.Teste_IHM === true) {\n        log('PILOTO: Refratário pronto (' + (plc.iTIT_01_Refratario_PV||0).toFixed(0) + '°C) - abrindo principal');\n        state.estado = 'ABRE_PRINCIPAL'; state.step = 0; state.timer = 0;\n    }\n    break;\n\n  case 'ABRE_PRINCIPAL':\n    if (state.step === 0) {\n        writes.oSV_02_Abrir = true; writes.oSV_02_Fechar = false;\n        writes.oGLP_Principal_Abrir = true;\n        writes.AUX_A_SV_02 = true;\n        log('PRINCIPAL: Abrindo SV-02...');\n        state.step = 1; state.timer = 0;\n    }\n    else if (state.step === 1) {\n        state.timer++;\n        if (plc.iSV_02_Opened === true || state.timer >= 8) {\n            if (!plc.iSV_02_Opened) log('AVISO: Timeout iSV_02_Opened');\n            else log('PRINCIPAL: SV-02 ABERTA - FIT-02: ' + (plc.iFIT_02_Ar_PV||0).toFixed(1) + ' Nm³/h');\n            writes.Inicia_Queima = true;\n            state.estado = 'QUEIMA_PLENA'; state.step = 0; state.timer = 0;\n        }\n    }\n    break;\n\n  case 'QUEIMA_PLENA':\n    state.timer++;\n    // Verifica alarme de temperatura caixa de vento\n    if (plc.iTIT_03_Cx_Vento_PV > (plc.Temp_CxVento_Max || 900)) {\n        log('ALARME: TIT-03 Cx Vento excedida: ' + (plc.iTIT_03_Cx_Vento_PV||0).toFixed(0) + '°C > ' + (plc.Temp_CxVento_Max||900));\n        writes.EMERGENCIA_ALARME1 = true;\n    }\n    // Verifica perda de chama principal\n    if (plc.iZS_Queimador_Principal === false && state.timer > 5) {\n        log('FALHA: Chama principal perdida!');\n        writes.EMERGENCIA_ALARME1 = true;\n        state.estado = 'FALHA'; break;\n    }\n    if (state.timer % 10 === 0) {\n        log('QUEIMA PLENA: TIT-01=' + (plc.iTIT_01_Refratario_PV||0).toFixed(0) +\n            '°C | CxVento=' + (plc.iTIT_03_Cx_Vento_PV||0).toFixed(0) +\n            '°C | FIT-01=' + (plc.iFIT_01_GLP_PV||0).toFixed(1) +\n            ' | Tempo=' + state.timer + 's');\n    }\n    // Fim por comando ou tempo mínimo de sinterização\n    var tSint = plc.Min_TempoSinterizacao || 120;\n    if (plc.Final_Queima === true || state.timer >= tSint) {\n        log('QUEIMA: Finalizando - tempo=' + state.timer + 's');\n        writes.Selo_TempoSinterizacao = true;\n        state.estado = 'DESLIGAMENTO'; state.step = 0; state.timer = 0;\n    }\n    break;\n\n  case 'DESLIGAMENTO':\n    if (state.step === 0) {\n        writes.oSV_02_Abrir = false; writes.oSV_02_Fechar = true;\n        writes.oGLP_Principal_Abrir = false;\n        writes.AUX_F_SV_02 = true; writes.AUX_A_SV_02 = false;\n        log('DESLIGAMENTO: Fechando SV-02 (principal)...');\n        state.step = 1; state.timer = 0;\n    }\n    else if (state.step === 1) {\n        state.timer++;\n        if (plc.iSV_02_Closed === true || state.timer >= 6) {\n            log('DESLIGAMENTO: SV-02 fechada - fechando piloto...');\n            writes.oSV_01_Abrir = false; writes.oSV_01_Fechar = true;\n            writes.oGLP_Piloto_Abrir = false;\n            state.step = 2; state.timer = 0;\n        }\n    }\n    else if (state.step === 2) {\n        state.timer++;\n        if (plc.iSV_01_Closed === true || state.timer >= 6) {\n            log('DESLIGAMENTO: Piloto fechado - fechando GLP geral...');\n            writes.oGLP_Fechada = true;\n            state.step = 3; state.timer = 0;\n        }\n    }\n    else if (state.step === 3) {\n        state.timer++;\n        if (plc.iSV_GLP_Closed === true || state.timer >= 6) {\n            log('DESLIGAMENTO: GLP geral fechado - iniciando resfriamento...');\n            state.estado = 'RESFRIAMENTO'; state.step = 0; state.timer = 0;\n        }\n    }\n    break;\n\n  case 'RESFRIAMENTO':\n    state.timer++;\n    var tResf = plc.Min_TempoResfriamento || 60;\n    if (state.timer % 10 === 0) {\n        log('RESFRIAMENTO: ' + state.timer + 's/' + tResf + 's | TIT-01=' + (plc.iTIT_01_Refratario_PV||0).toFixed(0) + '°C');\n    }\n    if (state.timer >= tResf) {\n        writes.oAciona_Soprador = false;\n        writes.oCx_Vento_Out = false;\n        writes.Inicia_Queima = false;\n        writes.Final_Queima = false;\n        writes.Inicio_HMI = false;\n        writes.Teste_IHM = false;\n        log('RESFRIAMENTO: Concluído - Sistema em IDLE');\n        state.estado = 'IDLE'; state.step = 0; state.timer = 0;\n    }\n    break;\n\n  case 'FALHA':\n    if (plc.Reset_IHM === true || plc.Reset_Seq === true) {\n        // Reset completo\n        writes.EMERGENCIA_ALARME1 = false;\n        writes.oSV_01_Abrir = false; writes.oSV_01_Fechar = true;\n        writes.oSV_02_Abrir = false; writes.oSV_02_Fechar = true;\n        writes.oGLP_Piloto_Abrir = false; writes.oGLP_Principal_Abrir = false;\n        writes.oAciona_Ignicao = false; writes.oAciona_Soprador = false;\n        writes.Inicio_HMI = false; writes.Inicia_Queima = false;\n        writes.Reset_IHM = false; writes.Reset_Seq = false;\n        log('RESET: Falha reconhecida - retornando ao IDLE');\n        state.estado = 'IDLE'; state.step = 0; state.timer = 0;\n    }\n    break;\n}\n\nflow.set('seq_state', state);\n\n// Saída 1: escrita no CLP | Saída 2: update dashboard\nvar write_msgs = Object.keys(writes).map(function(tag){\n    return {topic: tag, tag: tag, payload: writes[tag]};\n});\n\nreturn [write_msgs.length ? write_msgs : null,\n        {payload: {plc: plc, state: state}}];\n",
+    "outputs": 2,
+    "noerr": 0,
+    "x": 820,
+    "y": 200,
+    "wires": [
+      [
+        "eip_write_node"
+      ],
+      [
+        "dash_seq_fn"
+      ]
+    ]
+  },
+  {
+    "id": "eip_write_node",
+    "type": "eth-ip out",
+    "z": "tab_integracao",
+    "name": "Escreve CLP Simulador",
+    "controller": "eip_cfg_plc",
+    "program": "",
+    "x": 1100,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "dashboard_update_fn",
+    "type": "function",
+    "z": "tab_integracao",
+    "name": "Prepara dados Dashboard",
+    "func": "\nvar plc = msg.payload || {};\nvar msgs = [\n    {payload: (plc.iTIT_01_Refratario_PV||0).toFixed(1)*1, topic:'tit01'},\n    {payload: (plc.iTIT_02_Ignicao_PV||0).toFixed(1)*1,    topic:'tit02'},\n    {payload: (plc.iTIT_03_Cx_Vento_PV||0).toFixed(1)*1,   topic:'tit03'},\n    {payload: (plc.iFIT_01_GLP_PV||0).toFixed(2)*1,         topic:'fit01'},\n    {payload: (plc.iFIT_02_Ar_PV||0).toFixed(2)*1,          topic:'fit02'},\n    {payload: (plc.iPIT_01_GLP_PV||0).toFixed(3)*1,         topic:'pit01'},\n    {payload: (plc.iPIT_02_Gases_PV||0).toFixed(3)*1,       topic:'pit02'},\n    {payload: plc.EMERGENCIA_ALARME1 ? '🚨 EMERGÊNCIA ATIVA' : '✅ SISTEMA OK',\n              style: plc.EMERGENCIA_ALARME1 ? 'color:red;font-weight:bold' : 'color:green;font-weight:bold',\n              topic:'alarme'},\n    {payload: plc.iZS_Queimador_Piloto   ? '🔥 CHAMA PILOTO ON'    : '⭕ PILOTO APAGADO',   topic:'chama_p'},\n    {payload: plc.iZS_Queimador_Principal? '🔥 CHAMA PRINCIPAL ON' : '⭕ PRINCIPAL APAGADO',topic:'chama_pr'},\n    {payload: plc.iSV_01_Opened ? '🟢 SV-01 ABERTA' : '🔴 SV-01 FECHADA', topic:'sv01'},\n    {payload: plc.iSV_02_Opened ? '🟢 SV-02 ABERTA' : '🔴 SV-02 FECHADA', topic:'sv02'},\n    {payload: plc.iSV_GLP_Opened? '🟢 GLP ABERTO'   : '🔴 GLP FECHADO',   topic:'svglp'},\n    {payload: plc.iCx_Vento_Opened?'🟢 CX.VENTO ABERTA':'🔴 CX.VENTO FECHADA',topic:'cxvento'},\n    {payload: plc.oAciona_Soprador? '⚡ SOPRADOR ON' : '○ SOPRADOR OFF', topic:'soprador'},\n    {payload: plc.oAciona_Ignicao ? '⚡ IGNITOR ON'  : '○ IGNITOR OFF',  topic:'ignitor'},\n];\nreturn [msgs];\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 820,
+    "y": 140,
+    "wires": [
+      [
+        "sw_dash"
+      ]
+    ]
+  },
+  {
+    "id": "dash_seq_fn",
+    "type": "function",
+    "z": "tab_integracao",
+    "name": "Prepara dados Dashboard (Seq)",
+    "func": "\nvar d = msg.payload || {};\nvar plc = d.plc || {};\nvar state = d.state || {};\nvar msgs = [\n    {payload: state.estado || 'IDLE', topic:'estado'},\n    {payload: (state.log||[]).join('\\n'), topic:'log'},\n    {payload: (plc.iTIT_01_Refratario_PV||0).toFixed(1)*1, topic:'tit01'},\n    {payload: (plc.iTIT_02_Ignicao_PV||0).toFixed(1)*1,    topic:'tit02'},\n    {payload: (plc.iTIT_03_Cx_Vento_PV||0).toFixed(1)*1,   topic:'tit03'},\n    {payload: (plc.iFIT_01_GLP_PV||0).toFixed(2)*1,         topic:'fit01'},\n    {payload: (plc.iFIT_02_Ar_PV||0).toFixed(2)*1,          topic:'fit02'},\n    {payload: (plc.iPIT_01_GLP_PV||0).toFixed(3)*1,         topic:'pit01'},\n    {payload: (plc.iPIT_02_Gases_PV||0).toFixed(3)*1,       topic:'pit02'},\n    {payload: plc.EMERGENCIA_ALARME1 ? '🚨 EMERGÊNCIA ATIVA' : '✅ SISTEMA OK', topic:'alarme'},\n    {payload: plc.iZS_Queimador_Piloto   ?'🔥 CHAMA PILOTO ON':'⭕ PILOTO APAGADO',  topic:'chama_p'},\n    {payload: plc.iZS_Queimador_Principal?'🔥 CHAMA PRINCIPAL ON':'⭕ PRINCIPAL APAGADO',topic:'chama_pr'},\n    {payload: plc.iSV_01_Opened?'🟢 SV-01 ABERTA':'🔴 SV-01 FECHADA', topic:'sv01'},\n    {payload: plc.iSV_02_Opened?'🟢 SV-02 ABERTA':'🔴 SV-02 FECHADA', topic:'sv02'},\n    {payload: plc.iSV_GLP_Opened?'🟢 GLP ABERTO':'🔴 GLP FECHADO',    topic:'svglp'},\n    {payload: plc.iCx_Vento_Opened?'🟢 CX.VENTO ABERTA':'🔴 CX.VENTO FECHADA',topic:'cxvento'},\n    {payload: plc.oAciona_Soprador?'⚡ SOPRADOR ON':'○ SOPRADOR OFF',  topic:'soprador'},\n    {payload: plc.oAciona_Ignicao?'⚡ IGNITOR ON':'○ IGNITOR OFF',    topic:'ignitor'},\n    {payload: (plc.Parcial_TempoSinterizacao||0)*1, topic:'tempo_sint'},\n];\nreturn [msgs];\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1100,
+    "y": 200,
+    "wires": [
+      [
+        "sw_dash"
+      ]
+    ]
+  },
+  {
+    "id": "sw_dash",
+    "type": "switch",
+    "z": "tab_integracao",
+    "name": "Roteia Dashboard",
+    "property": "topic",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "estado",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "tit01",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "tit02",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "tit03",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "fit01",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "fit02",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "pit01",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "pit02",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "log",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "alarme",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "chama_p",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "chama_pr",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "sv01",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "sv02",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "svglp",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "cxvento",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "soprador",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "ignitor",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "tempo_sint",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 19,
+    "x": 700,
+    "y": 400,
+    "wires": [
+      [
+        "ui_estado"
+      ],
+      [
+        "ui_tit01"
+      ],
+      [
+        "ui_tit02"
+      ],
+      [
+        "ui_tit03"
+      ],
+      [
+        "ui_fit01_g",
+        "ui_fit01_chart"
+      ],
+      [
+        "ui_fit02"
+      ],
+      [
+        "ui_pit01"
+      ],
+      [
+        "ui_pit02"
+      ],
+      [
+        "ui_log"
+      ],
+      [
+        "ui_alarme"
+      ],
+      [
+        "ui_chama_p"
+      ],
+      [
+        "ui_chama_pr"
+      ],
+      [
+        "ui_sv01"
+      ],
+      [
+        "ui_sv02"
+      ],
+      [
+        "ui_svglp"
+      ],
+      [
+        "ui_cxvento"
+      ],
+      [
+        "ui_soprador"
+      ],
+      [
+        "ui_ignitor"
+      ],
+      [
+        "ui_tempo_sint"
+      ]
+    ]
+  },
+  {
+    "id": "ui_estado",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_controle",
+    "order": 1,
+    "width": "6",
+    "height": "1",
+    "name": "ui_estado",
+    "label": "Estado:",
+    "format": "<b style='font-size:16px'>{{msg.payload}}</b>",
+    "layout": "row-left",
+    "x": 950,
+    "y": 430,
+    "wires": []
+  },
+  {
+    "id": "ui_alarme",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_alarmes",
+    "order": 1,
+    "width": "6",
+    "height": "1",
+    "name": "ui_alarme",
+    "label": "",
+    "format": "<span style='font-size:15px;padding:5px 12px;border-radius:5px;background:{{msg.payload.includes(\"EMERGÊNCIA\") ? \"#c62828\" : \"#2e7d32\"}};color:white'>{{msg.payload}}</span>",
+    "layout": "row-left",
+    "x": 950,
+    "y": 430,
+    "wires": []
+  },
+  {
+    "id": "ui_chama_p",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 1,
+    "width": "6",
+    "height": "1",
+    "name": "ui_chama_p",
+    "label": "",
+    "format": "<b>{{msg.payload}}</b>",
+    "layout": "row-left",
+    "x": 950,
+    "y": 430,
+    "wires": []
+  },
+  {
+    "id": "ui_chama_pr",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 2,
+    "width": "6",
+    "height": "1",
+    "name": "ui_chama_pr",
+    "label": "",
+    "format": "<b>{{msg.payload}}</b>",
+    "layout": "row-left",
+    "x": 950,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "ui_sv01",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 3,
+    "width": "3",
+    "height": "1",
+    "name": "ui_sv01",
+    "label": "",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 950,
+    "y": 490,
+    "wires": []
+  },
+  {
+    "id": "ui_sv02",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 4,
+    "width": "3",
+    "height": "1",
+    "name": "ui_sv02",
+    "label": "",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 950,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "ui_svglp",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 5,
+    "width": "3",
+    "height": "1",
+    "name": "ui_svglp",
+    "label": "",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 950,
+    "y": 550,
+    "wires": []
+  },
+  {
+    "id": "ui_cxvento",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 6,
+    "width": "3",
+    "height": "1",
+    "name": "ui_cxvento",
+    "label": "",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 950,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "ui_soprador",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 7,
+    "width": "3",
+    "height": "1",
+    "name": "ui_soprador",
+    "label": "",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 950,
+    "y": 610,
+    "wires": []
+  },
+  {
+    "id": "ui_ignitor",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_status",
+    "order": 8,
+    "width": "3",
+    "height": "1",
+    "name": "ui_ignitor",
+    "label": "",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 950,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "ui_log",
+    "type": "ui_text",
+    "z": "tab_integracao",
+    "group": "grp_log",
+    "order": 1,
+    "width": "12",
+    "height": "8",
+    "name": "ui_log",
+    "label": "Log:",
+    "format": "<pre style='font-size:11px;color:#0f0;background:#111;padding:8px;border-radius:4px;white-space:pre-wrap;max-height:200px;overflow-y:auto'>{{msg.payload}}</pre>",
+    "layout": "row-left",
+    "x": 950,
+    "y": 430,
+    "wires": []
+  },
+  {
+    "id": "ui_tit01",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 1,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "TIT-01 Refratário",
+    "label": "°C",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "1000",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "500",
+    "seg2": "800",
+    "x": 950,
+    "y": 530,
+    "wires": []
+  },
+  {
+    "id": "ui_tit02",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 2,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "TIT-02 Ignição",
+    "label": "°C",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "400",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "100",
+    "seg2": "300",
+    "x": 950,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "ui_tit03",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 3,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "TIT-03 Cx.Vento",
+    "label": "°C",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "1000",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "600",
+    "seg2": "850",
+    "x": 950,
+    "y": 590,
+    "wires": []
+  },
+  {
+    "id": "ui_fit01_g",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 4,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "FIT-01 GLP",
+    "label": "Nm³/h",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "15",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "8",
+    "seg2": "12",
+    "x": 950,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "ui_fit02",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 5,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "FIT-02 Ar",
+    "label": "Nm³/h",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "50",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "20",
+    "seg2": "40",
+    "x": 950,
+    "y": 650,
+    "wires": []
+  },
+  {
+    "id": "ui_pit01",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 6,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "PIT-01 GLP",
+    "label": "bar",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "5",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "2",
+    "seg2": "4",
+    "x": 950,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "ui_pit02",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 7,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "PIT-02 Gases",
+    "label": "bar",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "2",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "0.8",
+    "seg2": "1.5",
+    "x": 950,
+    "y": 710,
+    "wires": []
+  },
+  {
+    "id": "ui_fit01_chart",
+    "type": "ui_chart",
+    "z": "tab_integracao",
+    "group": "grp_analogicos",
+    "order": 8,
+    "width": "12",
+    "height": "4",
+    "label": "Tendência FIT-01 GLP (Nm³/h)",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "Aguardando...",
+    "dot": false,
+    "ymin": "0",
+    "ymax": "15",
+    "removeOlder": 1,
+    "removeOlderPoints": "120",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ffbb78"
+    ],
+    "useOldData": true,
+    "x": 950,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "ui_tempo_sint",
+    "type": "ui_gauge",
+    "z": "tab_integracao",
+    "group": "grp_controle",
+    "order": 3,
+    "width": "6",
+    "height": "3",
+    "gtype": "donut",
+    "title": "Tempo Sinterização",
+    "label": "s",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "120",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "60",
+    "seg2": "100",
+    "x": 950,
+    "y": 730,
+    "wires": []
+  },
+  {
+    "id": "btn_iniciar",
+    "type": "ui_button",
+    "z": "tab_integracao",
+    "group": "grp_controle",
+    "order": 1,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "▶ INICIAR QUEIMA",
+    "color": "white",
+    "bgcolor": "#2e7d32",
+    "payload": "iniciar",
+    "payloadType": "str",
+    "topic": "cmd",
+    "topicType": "str",
+    "x": 120,
+    "y": 340,
+    "wires": [
+      [
+        "cmd_hmi_fn"
+      ]
+    ]
+  },
+  {
+    "id": "btn_finalizar",
+    "type": "ui_button",
+    "z": "tab_integracao",
+    "group": "grp_controle",
+    "order": 2,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "⏹ FINALIZAR QUEIMA",
+    "color": "white",
+    "bgcolor": "#e65100",
+    "payload": "finalizar",
+    "payloadType": "str",
+    "topic": "cmd",
+    "topicType": "str",
+    "x": 120,
+    "y": 380,
+    "wires": [
+      [
+        "cmd_hmi_fn"
+      ]
+    ]
+  },
+  {
+    "id": "btn_reset",
+    "type": "ui_button",
+    "z": "tab_integracao",
+    "group": "grp_controle",
+    "order": 3,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "🔄 RESET / FALHA",
+    "color": "white",
+    "bgcolor": "#1565c0",
+    "payload": "reset",
+    "payloadType": "str",
+    "topic": "cmd",
+    "topicType": "str",
+    "x": 120,
+    "y": 420,
+    "wires": [
+      [
+        "cmd_hmi_fn"
+      ]
+    ]
+  },
+  {
+    "id": "btn_emergencia",
+    "type": "ui_button",
+    "z": "tab_integracao",
+    "group": "grp_controle",
+    "order": 4,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "🚨 EMERGÊNCIA",
+    "color": "white",
+    "bgcolor": "#b71c1c",
+    "payload": "emergencia",
+    "payloadType": "str",
+    "topic": "cmd",
+    "topicType": "str",
+    "x": 120,
+    "y": 460,
+    "wires": [
+      [
+        "cmd_hmi_fn"
+      ]
+    ]
+  },
+  {
+    "id": "btn_forca_princ",
+    "type": "ui_button",
+    "z": "tab_integracao",
+    "group": "grp_controle",
+    "order": 5,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "🧪 FORÇAR PRINCIPAL",
+    "color": "white",
+    "bgcolor": "#4a148c",
+    "payload": "teste",
+    "payloadType": "str",
+    "topic": "cmd",
+    "topicType": "str",
+    "x": 120,
+    "y": 500,
+    "wires": [
+      [
+        "cmd_hmi_fn"
+      ]
+    ]
+  },
+  {
+    "id": "cmd_hmi_fn",
+    "type": "function",
+    "z": "tab_integracao",
+    "name": "Handler Comandos HMI → CLP",
+    "func": "\nvar cmd = msg.payload;\nvar writes = [];\nswitch(cmd) {\n  case 'iniciar':\n    writes.push({topic:'Inicio_HMI',  tag:'Inicio_HMI',  payload:true});\n    node.status({fill:'green',shape:'dot',text:'Inicio_HMI → TRUE'});\n    break;\n  case 'finalizar':\n    writes.push({topic:'Final_Queima',tag:'Final_Queima',payload:true});\n    node.status({fill:'orange',shape:'dot',text:'Final_Queima → TRUE'});\n    break;\n  case 'reset':\n    writes.push({topic:'Reset_IHM', tag:'Reset_IHM', payload:true});\n    writes.push({topic:'Reset_Seq', tag:'Reset_Seq', payload:true});\n    node.status({fill:'blue',shape:'dot',text:'Reset enviado'});\n    break;\n  case 'emergencia':\n    writes.push({topic:'EMERGENCIA_ALARME1',tag:'EMERGENCIA_ALARME1',payload:true});\n    writes.push({topic:'iZS_Emerg',         tag:'iZS_Emerg',         payload:true});\n    node.status({fill:'red',shape:'dot',text:'EMERGÊNCIA!'});\n    break;\n  case 'teste':\n    writes.push({topic:'Teste_IHM',tag:'Teste_IHM',payload:true});\n    node.status({fill:'purple',shape:'dot',text:'Forçando principal'});\n    break;\n}\nreturn [writes];\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 380,
+    "y": 400,
+    "wires": [
+      [
+        "eip_write_node"
+      ]
+    ]
+  },
+  {
+    "id": "conn_status_fn",
+    "type": "function",
+    "z": "tab_integracao",
+    "name": "Status Conexão CLP",
+    "func": "\n// Recebe eventos de status do eth-ip\nvar estado = msg.payload;\nnode.status({fill: estado ? 'green':'red', shape:'dot',\n             text: estado ? 'Conectado 192.168.250.10':'Desconectado'});\nreturn null;\n",
+    "outputs": 0,
+    "noerr": 0,
+    "x": 400,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "dbg_plc",
+    "type": "debug",
+    "z": "tab_integracao",
+    "name": "Debug PLC raw",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 1100,
+    "y": 80,
+    "wires": []
+  }
+]

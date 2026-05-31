@@ -97,7 +97,10 @@ public enum PlcTags {
     ALARMES_CONSOLIDADOS("ALARMES_JUNTOS"),                     // DINT
     STATUS_CONSOLIDADOS("STATUS_JUNTOS"),                       // DINT
     VARIAVEIS_JUNTAS("VARIAVEIS_JUNTAS"),                       // DINT
-    STATUS("Status");                                           // DINT
+    STATUS("Status"),                                         // DINT
+
+    IRESERVA("iReserva_Real"), //REAL
+    ORESERVA("oReserva_Real");   //REAL
 
     private final String tagName;
 

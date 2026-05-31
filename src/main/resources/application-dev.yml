@@ -1,0 +1,7 @@
+plc:
+  address: 127.0.0.1
+
+logging:
+  level:
+    br.com.sinterpiloto: DEBUG
+    br.com.sinterpiloto.supervisorio.domain.scheduler: ERROR

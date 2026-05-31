@@ -1,0 +1,1410 @@
+[
+  {
+    "id": "8ad56c5f012a49be",
+    "type": "ui_tab",
+    "name": "Queima Piloto",
+    "icon": "dashboard",
+    "order": 1
+  },
+  {
+    "id": "5711b6fb76dd4a69",
+    "type": "tab",
+    "label": "Queima Piloto EtherNet/IP",
+    "disabled": false
+  },
+  {
+    "id": "c8d8027a9ac3424f",
+    "type": "ui_group",
+    "name": "Controle",
+    "tab": "8ad56c5f012a49be",
+    "order": 1,
+    "disp": true,
+    "width": "12"
+  },
+  {
+    "id": "3838191184324a6e",
+    "type": "ui_group",
+    "name": "Status",
+    "tab": "8ad56c5f012a49be",
+    "order": 2,
+    "disp": true,
+    "width": "12"
+  },
+  {
+    "id": "8e160f0b850c4efa",
+    "type": "ui_group",
+    "name": "Analógicos",
+    "tab": "8ad56c5f012a49be",
+    "order": 3,
+    "disp": true,
+    "width": "12"
+  },
+  {
+    "id": "837e8e6c44264066",
+    "type": "ui_group",
+    "name": "Alarmes",
+    "tab": "8ad56c5f012a49be",
+    "order": 4,
+    "disp": true,
+    "width": "12"
+  },
+  {
+    "id": "cbe7f16f9f254237",
+    "type": "eth-ip endpoint",
+    "name": "PLC-Simulador",
+    "address": "192.168.250.10",
+    "slot": "0",
+    "cycletime": 500,
+    "vartable": {
+      "": {
+        "iSV_GLP_Closed": {
+          "type": "BOOL"
+        },
+        "iSV_GLP_Opened": {
+          "type": "BOOL"
+        },
+        "iSV_01_Closed": {
+          "type": "BOOL"
+        },
+        "iSV_01_Opened": {
+          "type": "BOOL"
+        },
+        "iSV_02_Closed": {
+          "type": "BOOL"
+        },
+        "iSV_02_Opened": {
+          "type": "BOOL"
+        },
+        "iCx_Vento_Closed": {
+          "type": "BOOL"
+        },
+        "iCx_Vento_Opened": {
+          "type": "BOOL"
+        },
+        "iZS_Queimador_Piloto": {
+          "type": "BOOL"
+        },
+        "iZS_Queimador_Principal": {
+          "type": "BOOL"
+        },
+        "iZS_Emerg": {
+          "type": "BOOL"
+        },
+        "iZS_Soprador": {
+          "type": "BOOL"
+        },
+        "iPiloto_Pronto": {
+          "type": "BOOL"
+        },
+        "iDefeito_Bool": {
+          "type": "BOOL"
+        },
+        "iFimDeCurso_Posicao": {
+          "type": "BOOL"
+        },
+        "EMERGENCIA_ALARME1": {
+          "type": "BOOL"
+        },
+        "Inicio_HMI": {
+          "type": "BOOL"
+        },
+        "Reset_IHM": {
+          "type": "BOOL"
+        },
+        "Reset_Seq": {
+          "type": "BOOL"
+        },
+        "Inicia_Queima": {
+          "type": "BOOL"
+        },
+        "Final_Queima": {
+          "type": "BOOL"
+        },
+        "Teste_IHM": {
+          "type": "BOOL"
+        },
+        "Teste_Iniciado": {
+          "type": "BOOL"
+        },
+        "SV_01_DuasSaidas": {
+          "type": "BOOL"
+        },
+        "SV_02_DuasSaidas": {
+          "type": "BOOL"
+        },
+        "AUX_A_SV_02": {
+          "type": "BOOL"
+        },
+        "AUX_F_SV_02": {
+          "type": "BOOL"
+        },
+        "Selo_TempoSinterizacao": {
+          "type": "BOOL"
+        },
+        "oAciona_Ignicao": {
+          "type": "BOOL"
+        },
+        "oAciona_Soprador": {
+          "type": "BOOL"
+        },
+        "oPiloto_Acesso": {
+          "type": "BOOL"
+        },
+        "oSV_01_Abrir": {
+          "type": "BOOL"
+        },
+        "oSV_01_Fechar": {
+          "type": "BOOL"
+        },
+        "oSV_02_Abrir": {
+          "type": "BOOL"
+        },
+        "oSV_02_Fechar": {
+          "type": "BOOL"
+        },
+        "oGLP_Piloto_Abrir": {
+          "type": "BOOL"
+        },
+        "oGLP_Principal_Abrir": {
+          "type": "BOOL"
+        },
+        "oGLP_Fechada": {
+          "type": "BOOL"
+        },
+        "oCx_Vento_Out": {
+          "type": "BOOL"
+        },
+        "oReset_Rele": {
+          "type": "BOOL"
+        },
+        "Descendo": {
+          "type": "BOOL"
+        },
+        "Subindo": {
+          "type": "BOOL"
+        },
+        "Hab_Descendo": {
+          "type": "BOOL"
+        },
+        "trava_supervi": {
+          "type": "BOOL"
+        },
+        "teste": {
+          "type": "BOOL"
+        },
+        "iTIT_01_Refratario_PV": {
+          "type": "REAL"
+        },
+        "iTIT_02_Ignicao_PV": {
+          "type": "REAL"
+        },
+        "iTIT_03_Cx_Vento_PV": {
+          "type": "REAL"
+        },
+        "iFIT_01_GLP_PV": {
+          "type": "REAL"
+        },
+        "iFIT_01_GLP_Val": {
+          "type": "REAL"
+        },
+        "iFIT_02_Ar_PV": {
+          "type": "REAL"
+        },
+        "iPIT_01_GLP_PV": {
+          "type": "REAL"
+        },
+        "iPIT_02_Gases_PV": {
+          "type": "REAL"
+        },
+        "Parcial_TempoSinterizacao": {
+          "type": "REAL"
+        },
+        "Min_TempoSinterizacao": {
+          "type": "REAL"
+        },
+        "Min_TempoResfriamento": {
+          "type": "REAL"
+        },
+        "Temp_CxVento_Max": {
+          "type": "REAL"
+        },
+        "oReserva_Real": {
+          "type": "REAL"
+        },
+        "iReserva_Real": {
+          "type": "REAL"
+        }
+      }
+    }
+  },
+  {
+    "id": "25c1248c8ae3453a",
+    "type": "eth-ip in",
+    "z": "5711b6fb76dd4a69",
+    "name": "Recebe todas as mudanças",
+    "endpoint": "cbe7f16f9f254237",
+    "mode": "all-split",
+    "variable": "",
+    "program": "",
+    "x": 160,
+    "y": 200,
+    "wires": [
+      [
+        "cc1f849cbb0043a8"
+      ]
+    ]
+  },
+  {
+    "id": "cc1f849cbb0043a8",
+    "type": "function",
+    "z": "5711b6fb76dd4a69",
+    "name": "Atualiza flow context com leitura PLC",
+    "func": "\n// Cada mensagem traz msg.topic = nome da tag, msg.payload = valor\nvar plc = flow.get('plc') || {};\nif (msg.topic) {\n    plc[msg.topic] = msg.payload;\n    flow.set('plc', plc);\n    flow.set('plc_ok', true);\n    node.status({fill:'green', shape:'dot', text: msg.topic + ' = ' + msg.payload});\n}\nreturn null;\n",
+    "outputs": 1,
+    "x": 400,
+    "y": 200,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "def7ee8eecd646a1",
+    "type": "inject",
+    "z": "5711b6fb76dd4a69",
+    "name": "Init",
+    "once": true,
+    "onceDelay": 1,
+    "payload": "init",
+    "payloadType": "str",
+    "x": 130,
+    "y": 80,
+    "wires": [
+      [
+        "5c316817d1834670"
+      ]
+    ]
+  },
+  {
+    "id": "5c316817d1834670",
+    "type": "function",
+    "z": "5711b6fb76dd4a69",
+    "name": "Inicializa Context",
+    "func": "\nflow.set('plc', {\n    iSV_GLP_Closed:true, iSV_GLP_Opened:false,\n    iSV_01_Closed:true,  iSV_01_Opened:false,\n    iSV_02_Closed:true,  iSV_02_Opened:false,\n    iCx_Vento_Closed:true, iCx_Vento_Opened:false,\n    iZS_Queimador_Piloto:false, iZS_Queimador_Principal:false,\n    iZS_Emerg:false, iZS_Soprador:false,\n    iPiloto_Pronto:false, iDefeito_Bool:false, iFimDeCurso_Posicao:false,\n    EMERGENCIA_ALARME1:false,\n    Inicio_HMI:false, Reset_IHM:false, Reset_Seq:false,\n    Inicia_Queima:false, Final_Queima:false, Teste_IHM:false, Teste_Iniciado:false,\n    SV_01_DuasSaidas:false, SV_02_DuasSaidas:false,\n    AUX_A_SV_02:false, AUX_F_SV_02:false, Selo_TempoSinterizacao:false,\n    oAciona_Ignicao:false, oAciona_Soprador:false, oPiloto_Acesso:false,\n    oSV_01_Abrir:false, oSV_01_Fechar:true,\n    oSV_02_Abrir:false, oSV_02_Fechar:true,\n    oGLP_Piloto_Abrir:false, oGLP_Principal_Abrir:false, oGLP_Fechada:true,\n    oCx_Vento_Out:false, oReset_Rele:false,\n    iTIT_01_Refratario_PV:25.0, iTIT_02_Ignicao_PV:25.0, iTIT_03_Cx_Vento_PV:25.0,\n    iFIT_01_GLP_PV:0.0, iFIT_01_GLP_Val:0.0, iFIT_02_Ar_PV:0.0,\n    iPIT_01_GLP_PV:0.0, iPIT_02_Gases_PV:0.0,\n    Parcial_TempoSinterizacao:0.0, Min_TempoSinterizacao:120.0,\n    Min_TempoResfriamento:60.0, Temp_CxVento_Max:900.0,\n});\nflow.set('estado', 'IDLE');\nflow.set('step', 0);\nflow.set('timer', 0);\nflow.set('log', []);\nflow.set('plc_ok', false);\nnode.status({fill:'green', shape:'ring', text:'Context OK'});\nreturn null;\n",
+    "outputs": 1,
+    "x": 310,
+    "y": 80,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "d0a7df1c911c4427",
+    "type": "inject",
+    "z": "5711b6fb76dd4a69",
+    "name": "Loop 1s",
+    "repeat": "1",
+    "once": false,
+    "payload": "tick",
+    "payloadType": "str",
+    "x": 130,
+    "y": 320,
+    "wires": [
+      [
+        "6ef223f5d6ac489e"
+      ]
+    ]
+  },
+  {
+    "id": "6ef223f5d6ac489e",
+    "type": "function",
+    "z": "5711b6fb76dd4a69",
+    "name": "Máquina de Estados - Queima Piloto",
+    "func": "\nvar plc   = flow.get('plc')   || {};\nvar est   = flow.get('estado') || 'IDLE';\nvar step  = flow.get('step')   || 0;\nvar timer = flow.get('timer')  || 0;\nvar log   = flow.get('log')    || [];\n\nfunction lg(m) {\n    var t = new Date().toLocaleTimeString('pt-BR');\n    log.unshift('[' + t + '] ' + m);\n    if (log.length > 40) log.pop();\n}\n\n// ── Simula feedbacks físicos (o simulador cpppo não tem lógica, \n//    então o Node-RED simula as respostas dos sensores) ──────────\nfunction simFeedback() {\n    // Caixa de vento\n    if (plc.oCx_Vento_Out && !plc.iCx_Vento_Opened && timer >= 3) {\n        plc.iCx_Vento_Opened = true; plc.iCx_Vento_Closed = false; plc.iZS_Soprador = true;\n    }\n    if (!plc.oCx_Vento_Out) {\n        plc.iCx_Vento_Opened = false; plc.iCx_Vento_Closed = true; plc.iZS_Soprador = false;\n    }\n    // GLP geral\n    if (!plc.oGLP_Fechada && !plc.iSV_GLP_Opened && timer >= 2) {\n        plc.iSV_GLP_Opened = true; plc.iSV_GLP_Closed = false;\n        plc.iPIT_01_GLP_PV = 1.5 + Math.random()*0.3;\n    }\n    if (plc.oGLP_Fechada) {\n        plc.iSV_GLP_Opened = false; plc.iSV_GLP_Closed = true; plc.iPIT_01_GLP_PV = 0;\n    }\n    // SV-01\n    if (plc.oSV_01_Abrir && !plc.iSV_01_Opened && timer >= 2) {\n        plc.iSV_01_Opened = true; plc.iSV_01_Closed = false;\n        plc.iFIT_01_GLP_PV = 5 + Math.random()*1.2;\n    }\n    if (!plc.oSV_01_Abrir && plc.oSV_01_Fechar) {\n        plc.iSV_01_Opened = false; plc.iSV_01_Closed = true; plc.iFIT_01_GLP_PV = 0;\n    }\n    // SV-02\n    if (plc.oSV_02_Abrir && !plc.iSV_02_Opened && timer >= 2) {\n        plc.iSV_02_Opened = true; plc.iSV_02_Closed = false;\n        plc.iFIT_02_Ar_PV = 25 + Math.random()*5;\n    }\n    if (!plc.oSV_02_Abrir && plc.oSV_02_Fechar) {\n        plc.iSV_02_Opened = false; plc.iSV_02_Closed = true; plc.iFIT_02_Ar_PV = 0;\n    }\n}\n\nsimFeedback();\n\nswitch(est) {\n\n  case 'IDLE':\n    if (plc.Inicio_HMI || plc.Inicia_Queima) {\n      if (plc.iDefeito_Bool || plc.EMERGENCIA_ALARME1) {\n        lg('BLOQUEADO: Defeito/Alarme ativo. Faça RESET primeiro.');\n        break;\n      }\n      est = 'PRE_PURGA'; step = 0; timer = 0;\n      plc.Inicio_HMI = false;\n      lg('INÍCIO: Sequência de queima piloto iniciada');\n    }\n    break;\n\n  case 'PRE_PURGA':\n    if (step === 0) {\n      plc.oAciona_Soprador = true;\n      plc.oCx_Vento_Out    = true;\n      plc.oSV_01_Abrir = false; plc.oSV_01_Fechar = true;\n      plc.oSV_02_Abrir = false; plc.oSV_02_Fechar = true;\n      plc.oGLP_Fechada = true;\n      lg('PURGA: Acionando soprador + abrindo caixa de vento...');\n      step = 1; timer = 0;\n    } else if (step === 1) {\n      timer++;\n      if (plc.iCx_Vento_Opened && plc.iZS_Soprador) {\n        lg('PURGA: Soprador OK. Purgando 15s...');\n        step = 2; timer = 0;\n      } else if (timer > 12) {\n        lg('FALHA: Timeout - caixa de vento não confirmada!');\n        plc.EMERGENCIA_ALARME1 = true; est = 'FALHA';\n      }\n    } else if (step === 2) {\n      timer++;\n      if (timer % 5 === 0) lg('PURGA: ' + timer + '/15s...');\n      if (timer >= 15) {\n        lg('PURGA concluída. Abrindo GLP...');\n        est = 'ABRE_GLP'; step = 0; timer = 0;\n      }\n    }\n    break;\n\n  case 'ABRE_GLP':\n    if (step === 0) {\n      plc.oGLP_Fechada = false;\n      lg('GLP: Abrindo válvula geral...');\n      step = 1; timer = 0;\n    } else {\n      timer++;\n      if (plc.iSV_GLP_Opened) {\n        lg('GLP: Confirmada. PIT-01=' + (plc.iPIT_01_GLP_PV||0).toFixed(2) + ' bar');\n        est = 'ABRE_SV01'; step = 0; timer = 0;\n      } else if (timer > 10) {\n        lg('FALHA: Timeout abertura SV GLP geral!');\n        plc.EMERGENCIA_ALARME1 = true; est = 'FALHA';\n      }\n    }\n    break;\n\n  case 'ABRE_SV01':\n    if (step === 0) {\n      plc.oSV_01_Abrir = true; plc.oSV_01_Fechar = false;\n      plc.oGLP_Piloto_Abrir = true;\n      lg('SV-01: Abrindo válvula piloto GLP...');\n      step = 1; timer = 0;\n    } else {\n      timer++;\n      if (plc.iSV_01_Opened) {\n        plc.SV_01_DuasSaidas = true;\n        lg('SV-01: Aberta. FIT-01=' + (plc.iFIT_01_GLP_PV||0).toFixed(1) + ' Nm³/h');\n        est = 'IGNICAO'; step = 0; timer = 0;\n      } else if (timer > 10) {\n        lg('FALHA: Timeout SV-01!');\n        plc.EMERGENCIA_ALARME1 = true; est = 'FALHA';\n      }\n    }\n    break;\n\n  case 'IGNICAO':\n    if (step === 0) {\n      plc.oAciona_Ignicao = true; plc.oPiloto_Acesso = true;\n      lg('IGNIÇÃO: Ativando transformador...');\n      step = 1; timer = 0;\n    } else {\n      timer++;\n      if (timer >= 4) {\n        if (Math.random() > 0.08) {  // 92% de sucesso\n          plc.iZS_Queimador_Piloto = true;\n          plc.iTIT_02_Ignicao_PV = 120 + Math.random()*40;\n          plc.oAciona_Ignicao = false;\n          lg('IGNIÇÃO: ✓ CHAMA PILOTO! Temp=' + plc.iTIT_02_Ignicao_PV.toFixed(0) + '°C');\n          est = 'PILOTO_ESTAVEL'; step = 0; timer = 0;\n        } else {\n          plc.oAciona_Ignicao = false;\n          plc.oSV_01_Abrir = false; plc.oSV_01_Fechar = true;\n          plc.oGLP_Piloto_Abrir = false;\n          lg('IGNIÇÃO: ✗ FALHA - Sem chama! Emergência!');\n          plc.EMERGENCIA_ALARME1 = true; est = 'FALHA';\n        }\n      }\n    }\n    break;\n\n  case 'PILOTO_ESTAVEL':\n    timer++;\n    plc.iTIT_01_Refratario_PV = Math.min((plc.iTIT_01_Refratario_PV||25) + 2 + Math.random()*1.5, 350);\n    plc.iTIT_02_Ignicao_PV    = 140 + Math.random()*25;\n    if (timer % 10 === 0)\n      lg('PILOTO: Refrat=' + plc.iTIT_01_Refratario_PV.toFixed(0) + '°C');\n    if (!plc.iZS_Queimador_Piloto) {\n      lg('ALARME: Perda de chama piloto!');\n      plc.EMERGENCIA_ALARME1 = true; est = 'FALHA';\n    }\n    if (plc.iTIT_01_Refratario_PV >= 300 || plc.Teste_IHM) {\n      plc.Teste_IHM = false;\n      lg('PILOTO: Refrat pronto (' + plc.iTIT_01_Refratario_PV.toFixed(0) + '°C). Abrindo principal...');\n      est = 'ABRE_SV02'; step = 0; timer = 0;\n    }\n    break;\n\n  case 'ABRE_SV02':\n    if (step === 0) {\n      plc.oSV_02_Abrir = true; plc.oSV_02_Fechar = false;\n      plc.oGLP_Principal_Abrir = true; plc.AUX_A_SV_02 = true;\n      lg('PRINCIPAL: Abrindo SV-02...');\n      step = 1; timer = 0;\n    } else {\n      timer++;\n      if (plc.iSV_02_Opened) {\n        plc.SV_02_DuasSaidas = true;\n        plc.iZS_Queimador_Principal = true;\n        plc.Inicia_Queima = true;\n        plc.Parcial_TempoSinterizacao = 0;\n        lg('PRINCIPAL: ✓ SV-02 aberta! Queima plena iniciada.');\n        est = 'QUEIMA_PLENA'; step = 0; timer = 0;\n      } else if (timer > 12) {\n        lg('FALHA: Timeout SV-02!');\n        plc.EMERGENCIA_ALARME1 = true; est = 'FALHA';\n      }\n    }\n    break;\n\n  case 'QUEIMA_PLENA':\n    timer++;\n    plc.Parcial_TempoSinterizacao = (plc.Parcial_TempoSinterizacao||0) + 1;\n    plc.iTIT_01_Refratario_PV = Math.min((plc.iTIT_01_Refratario_PV||300) + 1 + Math.random()*2, 950);\n    plc.iTIT_03_Cx_Vento_PV   = Math.min((plc.iTIT_03_Cx_Vento_PV||25)  + 3 + Math.random()*5, 850);\n    plc.iFIT_01_GLP_PV  = 8  + Math.random()*2;\n    plc.iFIT_02_Ar_PV   = 28 + Math.random()*4;\n    plc.iPIT_01_GLP_PV  = 1.4 + Math.random()*0.2;\n    plc.iPIT_02_Gases_PV = 0.5 + Math.random()*0.2;\n    if (timer % 15 === 0)\n      lg('QUEIMA: Refrat=' + plc.iTIT_01_Refratario_PV.toFixed(0) +\n         '°C CxV=' + plc.iTIT_03_Cx_Vento_PV.toFixed(0) +\n         '°C Tempo=' + Math.round(plc.Parcial_TempoSinterizacao) + 's');\n    if (plc.iTIT_03_Cx_Vento_PV > (plc.Temp_CxVento_Max||900)) {\n      lg('ALARME HH: Temp caixa de vento > ' + (plc.Temp_CxVento_Max||900) + '°C!');\n      plc.EMERGENCIA_ALARME1 = true;\n    }\n    if (!plc.iZS_Queimador_Principal) {\n      lg('ALARME: Perda de chama principal!');\n      plc.EMERGENCIA_ALARME1 = true; est = 'FALHA';\n    }\n    if (plc.Final_Queima || plc.Parcial_TempoSinterizacao >= (plc.Min_TempoSinterizacao||120)) {\n      plc.Selo_TempoSinterizacao = true;\n      lg('QUEIMA: Tempo OK. Iniciando desligamento...');\n      est = 'DESLIGAMENTO'; step = 0; timer = 0;\n    }\n    break;\n\n  case 'DESLIGAMENTO':\n    if (step === 0) {\n      plc.oSV_02_Abrir = false; plc.oSV_02_Fechar = true;\n      plc.oGLP_Principal_Abrir = false; plc.AUX_F_SV_02 = true;\n      lg('DESLIG: Fechando SV-02...');\n      step = 1; timer = 0;\n    } else if (step === 1) {\n      timer++;\n      if (plc.iSV_02_Closed || timer > 6) {\n        plc.iZS_Queimador_Principal = false; plc.Inicia_Queima = false;\n        lg('DESLIG: SV-02 fechada. Fechando piloto...');\n        step = 2; timer = 0;\n      }\n    } else if (step === 2) {\n      timer++;\n      if (timer >= 3) {\n        plc.oSV_01_Abrir = false; plc.oSV_01_Fechar = true;\n        plc.oGLP_Piloto_Abrir = false; plc.oAciona_Ignicao = false;\n        step = 3; timer = 0;\n        lg('DESLIG: Piloto desligado. Fechando GLP geral...');\n      }\n    } else if (step === 3) {\n      timer++;\n      if (plc.iSV_01_Closed || timer > 6) {\n        plc.oGLP_Fechada = true; plc.iZS_Queimador_Piloto = false;\n        plc.iSV_GLP_Opened = false; plc.iSV_GLP_Closed = true;\n        lg('DESLIG: GLP fechado. Resfriamento ' + (plc.Min_TempoResfriamento||60) + 's...');\n        est = 'RESFRIAMENTO'; step = 0; timer = 0;\n      }\n    }\n    break;\n\n  case 'RESFRIAMENTO':\n    timer++;\n    plc.iTIT_01_Refratario_PV = Math.max((plc.iTIT_01_Refratario_PV||25) - 4 - Math.random()*2, 25);\n    plc.iTIT_03_Cx_Vento_PV   = Math.max((plc.iTIT_03_Cx_Vento_PV||25)  - 6 - Math.random()*3, 25);\n    if (timer % 10 === 0)\n      lg('RESFRIAMENTO: ' + timer + 's | Refrat=' + plc.iTIT_01_Refratario_PV.toFixed(0) + '°C');\n    if (timer >= (plc.Min_TempoResfriamento||60)) {\n      plc.oAciona_Soprador = false; plc.oCx_Vento_Out = false;\n      plc.iFIT_01_GLP_PV = 0; plc.iFIT_02_Ar_PV = 0;\n      plc.iPIT_01_GLP_PV = 0; plc.iPIT_02_Gases_PV = 0;\n      plc.Final_Queima = false; plc.Inicio_HMI = false;\n      lg('RESFRIAMENTO completo. Sistema em IDLE.');\n      est = 'IDLE'; step = 0; timer = 0;\n    }\n    break;\n\n  case 'FALHA':\n    if (plc.Reset_IHM || plc.Reset_Seq) {\n      lg('RESET: Reconhecido. Voltando ao IDLE...');\n      plc.oAciona_Ignicao = false; plc.oAciona_Soprador = false;\n      plc.oSV_01_Abrir = false; plc.oSV_01_Fechar = true;\n      plc.oSV_02_Abrir = false; plc.oSV_02_Fechar = true;\n      plc.oGLP_Piloto_Abrir = false; plc.oGLP_Principal_Abrir = false;\n      plc.oGLP_Fechada = true; plc.oCx_Vento_Out = false;\n      plc.iZS_Queimador_Piloto = false; plc.iZS_Queimador_Principal = false;\n      plc.EMERGENCIA_ALARME1 = false; plc.iDefeito_Bool = false;\n      plc.Inicia_Queima = false; plc.Inicio_HMI = false;\n      plc.Reset_IHM = false; plc.Reset_Seq = false;\n      est = 'IDLE'; step = 0; timer = 0;\n    }\n    break;\n}\n\nflow.set('plc', plc);\nflow.set('estado', est);\nflow.set('step', step);\nflow.set('timer', timer);\nflow.set('log', log);\n\nreturn [{payload: {plc: plc, estado: est, log: log}}];\n",
+    "outputs": 1,
+    "x": 320,
+    "y": 320,
+    "wires": [
+      [
+        "22c16fb8efde461e",
+        "b8509201089f41b8"
+      ]
+    ]
+  },
+  {
+    "id": "22c16fb8efde461e",
+    "type": "function",
+    "z": "5711b6fb76dd4a69",
+    "name": "Roteia escritas p/ nós eth-ip out",
+    "func": "var plc = msg.payload.plc;\nnode.send({payload: plc['Inicio_HMI']});\nnode.send(null, {payload: plc['Reset_IHM']});\nnode.send(null, null, {payload: plc['Reset_Seq']});\nnode.send(null, null, null, {payload: plc['Final_Queima']});\nnode.send(null, null, null, null, {payload: plc['Teste_IHM']});\nnode.send(null, null, null, null, null, {payload: plc['EMERGENCIA_ALARME1']});\nnode.send(null, null, null, null, null, null, {payload: plc['oAciona_Ignicao']});\nnode.send(null, null, null, null, null, null, null, {payload: plc['oAciona_Soprador']});\nnode.send(null, null, null, null, null, null, null, null, {payload: plc['oPiloto_Acesso']});\nnode.send(null, null, null, null, null, null, null, null, null, {payload: plc['oSV_01_Abrir']});\nnode.send(null, null, null, null, null, null, null, null, null, null, {payload: plc['oSV_01_Fechar']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, {payload: plc['oSV_02_Abrir']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['oSV_02_Fechar']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['oGLP_Piloto_Abrir']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['oGLP_Principal_Abrir']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['oGLP_Fechada']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['oCx_Vento_Out']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['oReset_Rele']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['SV_01_DuasSaidas']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['SV_02_DuasSaidas']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['AUX_A_SV_02']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['AUX_F_SV_02']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['Selo_TempoSinterizacao']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['Inicia_Queima']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['iTIT_01_Refratario_PV']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['iTIT_02_Ignicao_PV']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['iTIT_03_Cx_Vento_PV']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['iFIT_01_GLP_PV']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['iFIT_02_Ar_PV']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['iPIT_01_GLP_PV']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['iPIT_02_Gases_PV']});\nnode.send(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, {payload: plc['Parcial_TempoSinterizacao']});\nreturn null;",
+    "outputs": 32,
+    "x": 560,
+    "y": 320,
+    "wires": [
+      [
+        "fa009bba35634447"
+      ],
+      [
+        "86c8fc419cca48a2"
+      ],
+      [
+        "cd21f8b8f3424ad8"
+      ],
+      [
+        "cfee0cbdc03043e3"
+      ],
+      [
+        "5498b3fe042c42aa"
+      ],
+      [
+        "7edb50acb8f24ee4"
+      ],
+      [
+        "599db5045ed3406c"
+      ],
+      [
+        "5ab2d8af91a841ff"
+      ],
+      [
+        "afe387bfd1c844ca"
+      ],
+      [
+        "68e3227d4b0c4c1d"
+      ],
+      [
+        "fe36ce9253b14a1e"
+      ],
+      [
+        "4c628e3000b94a31"
+      ],
+      [
+        "c8a64dbcefe54b8e"
+      ],
+      [
+        "68ea7193c2564314"
+      ],
+      [
+        "b3d01b034e1e495d"
+      ],
+      [
+        "a6c7196dc29c4935"
+      ],
+      [
+        "08fcf7e0e03a4dc2"
+      ],
+      [
+        "ebcd64063b1f4252"
+      ],
+      [
+        "e4c2099f462146dd"
+      ],
+      [
+        "d6f31b4d2f30437c"
+      ],
+      [
+        "238e427ab9dd4c4c"
+      ],
+      [
+        "a6af16f0b63a4e91"
+      ],
+      [
+        "a72359b3da8e43af"
+      ],
+      [
+        "8e1cff0eeb8f4bb8"
+      ],
+      [
+        "b16344af068f4f88"
+      ],
+      [
+        "48fe039c58504278"
+      ],
+      [
+        "a827be59986d4140"
+      ],
+      [
+        "71c53eb31ef649bb"
+      ],
+      [
+        "4ed983a16d3243e5"
+      ],
+      [
+        "81129080a44b47ff"
+      ],
+      [
+        "00c5117cf3a54e5a"
+      ],
+      [
+        "2a6469195fab4bff"
+      ]
+    ]
+  },
+  {
+    "id": "fa009bba35634447",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Inicio_HMI",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Inicio_HMI",
+    "program": "",
+    "x": 800,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "86c8fc419cca48a2",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Reset_IHM",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Reset_IHM",
+    "program": "",
+    "x": 800,
+    "y": 210,
+    "wires": []
+  },
+  {
+    "id": "cd21f8b8f3424ad8",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Reset_Seq",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Reset_Seq",
+    "program": "",
+    "x": 800,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "cfee0cbdc03043e3",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Final_Queima",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Final_Queima",
+    "program": "",
+    "x": 800,
+    "y": 270,
+    "wires": []
+  },
+  {
+    "id": "5498b3fe042c42aa",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Teste_IHM",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Teste_IHM",
+    "program": "",
+    "x": 800,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "7edb50acb8f24ee4",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "EMERGENCIA_ALARME1",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "EMERGENCIA_ALARME1",
+    "program": "",
+    "x": 800,
+    "y": 330,
+    "wires": []
+  },
+  {
+    "id": "599db5045ed3406c",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oAciona_Ignicao",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oAciona_Ignicao",
+    "program": "",
+    "x": 800,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "5ab2d8af91a841ff",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oAciona_Soprador",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oAciona_Soprador",
+    "program": "",
+    "x": 800,
+    "y": 390,
+    "wires": []
+  },
+  {
+    "id": "afe387bfd1c844ca",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oPiloto_Acesso",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oPiloto_Acesso",
+    "program": "",
+    "x": 800,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "68e3227d4b0c4c1d",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oSV_01_Abrir",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oSV_01_Abrir",
+    "program": "",
+    "x": 800,
+    "y": 450,
+    "wires": []
+  },
+  {
+    "id": "fe36ce9253b14a1e",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oSV_01_Fechar",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oSV_01_Fechar",
+    "program": "",
+    "x": 800,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "4c628e3000b94a31",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oSV_02_Abrir",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oSV_02_Abrir",
+    "program": "",
+    "x": 800,
+    "y": 510,
+    "wires": []
+  },
+  {
+    "id": "c8a64dbcefe54b8e",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oSV_02_Fechar",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oSV_02_Fechar",
+    "program": "",
+    "x": 800,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "68ea7193c2564314",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oGLP_Piloto_Abrir",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oGLP_Piloto_Abrir",
+    "program": "",
+    "x": 800,
+    "y": 570,
+    "wires": []
+  },
+  {
+    "id": "b3d01b034e1e495d",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oGLP_Principal_Abrir",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oGLP_Principal_Abrir",
+    "program": "",
+    "x": 800,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "a6c7196dc29c4935",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oGLP_Fechada",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oGLP_Fechada",
+    "program": "",
+    "x": 800,
+    "y": 630,
+    "wires": []
+  },
+  {
+    "id": "08fcf7e0e03a4dc2",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oCx_Vento_Out",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oCx_Vento_Out",
+    "program": "",
+    "x": 800,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "ebcd64063b1f4252",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "oReset_Rele",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "oReset_Rele",
+    "program": "",
+    "x": 800,
+    "y": 690,
+    "wires": []
+  },
+  {
+    "id": "e4c2099f462146dd",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "SV_01_DuasSaidas",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "SV_01_DuasSaidas",
+    "program": "",
+    "x": 800,
+    "y": 720,
+    "wires": []
+  },
+  {
+    "id": "d6f31b4d2f30437c",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "SV_02_DuasSaidas",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "SV_02_DuasSaidas",
+    "program": "",
+    "x": 800,
+    "y": 750,
+    "wires": []
+  },
+  {
+    "id": "238e427ab9dd4c4c",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "AUX_A_SV_02",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "AUX_A_SV_02",
+    "program": "",
+    "x": 800,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "a6af16f0b63a4e91",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "AUX_F_SV_02",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "AUX_F_SV_02",
+    "program": "",
+    "x": 800,
+    "y": 810,
+    "wires": []
+  },
+  {
+    "id": "a72359b3da8e43af",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Selo_TempoSinterizacao",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Selo_TempoSinterizacao",
+    "program": "",
+    "x": 800,
+    "y": 840,
+    "wires": []
+  },
+  {
+    "id": "8e1cff0eeb8f4bb8",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Inicia_Queima",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Inicia_Queima",
+    "program": "",
+    "x": 800,
+    "y": 870,
+    "wires": []
+  },
+  {
+    "id": "b16344af068f4f88",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "iTIT_01_Refratario_PV",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "iTIT_01_Refratario_PV",
+    "program": "",
+    "x": 800,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "48fe039c58504278",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "iTIT_02_Ignicao_PV",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "iTIT_02_Ignicao_PV",
+    "program": "",
+    "x": 800,
+    "y": 930,
+    "wires": []
+  },
+  {
+    "id": "a827be59986d4140",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "iTIT_03_Cx_Vento_PV",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "iTIT_03_Cx_Vento_PV",
+    "program": "",
+    "x": 800,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "71c53eb31ef649bb",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "iFIT_01_GLP_PV",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "iFIT_01_GLP_PV",
+    "program": "",
+    "x": 800,
+    "y": 990,
+    "wires": []
+  },
+  {
+    "id": "4ed983a16d3243e5",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "iFIT_02_Ar_PV",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "iFIT_02_Ar_PV",
+    "program": "",
+    "x": 800,
+    "y": 1020,
+    "wires": []
+  },
+  {
+    "id": "81129080a44b47ff",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "iPIT_01_GLP_PV",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "iPIT_01_GLP_PV",
+    "program": "",
+    "x": 800,
+    "y": 1050,
+    "wires": []
+  },
+  {
+    "id": "00c5117cf3a54e5a",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "iPIT_02_Gases_PV",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "iPIT_02_Gases_PV",
+    "program": "",
+    "x": 800,
+    "y": 1080,
+    "wires": []
+  },
+  {
+    "id": "2a6469195fab4bff",
+    "type": "eth-ip out",
+    "z": "5711b6fb76dd4a69",
+    "name": "Parcial_TempoSinterizacao",
+    "endpoint": "cbe7f16f9f254237",
+    "variable": "Parcial_TempoSinterizacao",
+    "program": "",
+    "x": 800,
+    "y": 1110,
+    "wires": []
+  },
+  {
+    "id": "a8f001c5a53d4c59",
+    "type": "function",
+    "z": "5711b6fb76dd4a69",
+    "name": "Handler Comandos",
+    "func": "\nvar plc = flow.get('plc') || {};\nswitch(msg.payload) {\n  case 'iniciar':    plc.Inicio_HMI = true; break;\n  case 'finalizar':  plc.Final_Queima = true; break;\n  case 'reset':      plc.Reset_IHM = true; plc.Reset_Seq = true; break;\n  case 'testar':     plc.Teste_IHM = true; break;\n  case 'emergencia':\n    plc.EMERGENCIA_ALARME1 = true; plc.iDefeito_Bool = true; plc.iZS_Emerg = true;\n    plc.oSV_01_Abrir = false; plc.oSV_01_Fechar = true;\n    plc.oSV_02_Abrir = false; plc.oSV_02_Fechar = true;\n    plc.oGLP_Piloto_Abrir = false; plc.oGLP_Principal_Abrir = false;\n    plc.oAciona_Ignicao = false;\n    flow.set('estado', 'FALHA'); flow.set('step', 0); flow.set('timer', 0);\n    break;\n}\nflow.set('plc', plc);\nnode.status({fill:'blue', shape:'dot', text: msg.payload});\nreturn null;\n",
+    "outputs": 1,
+    "x": 350,
+    "y": 500,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "0989537728064a3f",
+    "type": "ui_button",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 1,
+    "width": "3",
+    "height": "1",
+    "label": "▶ INICIAR QUEIMA",
+    "color": "white",
+    "bgcolor": "green",
+    "payload": "iniciar",
+    "payloadType": "str",
+    "name": "▶ INICIAR QUEIMA",
+    "x": 130,
+    "y": 480,
+    "wires": [
+      [
+        "a8f001c5a53d4c59"
+      ]
+    ]
+  },
+  {
+    "id": "7f8792a1290e4f4d",
+    "type": "ui_button",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 2,
+    "width": "3",
+    "height": "1",
+    "label": "⏹ FINALIZAR QUEIMA",
+    "color": "white",
+    "bgcolor": "orange",
+    "payload": "finalizar",
+    "payloadType": "str",
+    "name": "⏹ FINALIZAR QUEIMA",
+    "x": 130,
+    "y": 520,
+    "wires": [
+      [
+        "a8f001c5a53d4c59"
+      ]
+    ]
+  },
+  {
+    "id": "f234f6d7945a4446",
+    "type": "ui_button",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 3,
+    "width": "3",
+    "height": "1",
+    "label": "🔄 RESET",
+    "color": "white",
+    "bgcolor": "blue",
+    "payload": "reset",
+    "payloadType": "str",
+    "name": "🔄 RESET",
+    "x": 130,
+    "y": 560,
+    "wires": [
+      [
+        "a8f001c5a53d4c59"
+      ]
+    ]
+  },
+  {
+    "id": "cb00f0b521914448",
+    "type": "ui_button",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 4,
+    "width": "3",
+    "height": "1",
+    "label": "🚨 EMERGÊNCIA",
+    "color": "white",
+    "bgcolor": "#8B0000",
+    "payload": "emergencia",
+    "payloadType": "str",
+    "name": "🚨 EMERGÊNCIA",
+    "x": 130,
+    "y": 600,
+    "wires": [
+      [
+        "a8f001c5a53d4c59"
+      ]
+    ]
+  },
+  {
+    "id": "4eecd9e55a8e4f3f",
+    "type": "ui_button",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 5,
+    "width": "3",
+    "height": "1",
+    "label": "⚡ FORÇAR PRINCIPAL",
+    "color": "white",
+    "bgcolor": "#1565C0",
+    "payload": "testar",
+    "payloadType": "str",
+    "name": "⚡ FORÇAR PRINCIPAL",
+    "x": 130,
+    "y": 640,
+    "wires": [
+      [
+        "a8f001c5a53d4c59"
+      ]
+    ]
+  },
+  {
+    "id": "b8509201089f41b8",
+    "type": "function",
+    "z": "5711b6fb76dd4a69",
+    "name": "Distribui Dashboard",
+    "func": "\nvar d = msg.payload, p = d.plc;\nvar plc_ok = flow.get('plc_ok');\nreturn [[\n  {payload: d.estado, topic:'estado'},\n  {payload: (d.log||[]).join('\\n'), topic:'log'},\n  {payload: Math.round((p.iTIT_01_Refratario_PV||0)*10)/10, topic:'tit01'},\n  {payload: Math.round((p.iTIT_02_Ignicao_PV||0)*10)/10,    topic:'tit02'},\n  {payload: Math.round((p.iTIT_03_Cx_Vento_PV||0)*10)/10,   topic:'tit03'},\n  {payload: Math.round((p.iFIT_01_GLP_PV||0)*10)/10,        topic:'fit01'},\n  {payload: Math.round((p.iFIT_02_Ar_PV||0)*10)/10,         topic:'fit02'},\n  {payload: Math.round((p.iPIT_01_GLP_PV||0)*100)/100,      topic:'pit01'},\n  {payload: Math.round((p.iPIT_02_Gases_PV||0)*100)/100,    topic:'pit02'},\n  {payload: Math.round(p.Parcial_TempoSinterizacao||0),      topic:'sint'},\n  {payload: !!p.EMERGENCIA_ALARME1,                          topic:'alarme'},\n  {payload: p.iZS_Queimador_Piloto ? '🔥 ON' : '⭕ OFF',    topic:'chama_p'},\n  {payload: p.iZS_Queimador_Principal ? '🔥 ON' : '⭕ OFF', topic:'chama_pr'},\n  {payload: plc_ok ? '✅ PLC CONECTADO' : '❌ PLC OFFLINE', topic:'plc_sts'},\n  {payload: Math.round((p.iFIT_01_GLP_PV||0)*10)/10,        topic:'chart'},\n]];\n",
+    "outputs": 1,
+    "x": 560,
+    "y": 260,
+    "wires": [
+      [
+        "87705626d9c1467e"
+      ]
+    ]
+  },
+  {
+    "id": "87705626d9c1467e",
+    "type": "switch",
+    "z": "5711b6fb76dd4a69",
+    "name": "Roteia topics",
+    "property": "topic",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "estado"
+      },
+      {
+        "t": "eq",
+        "v": "log"
+      },
+      {
+        "t": "eq",
+        "v": "tit01"
+      },
+      {
+        "t": "eq",
+        "v": "tit02"
+      },
+      {
+        "t": "eq",
+        "v": "tit03"
+      },
+      {
+        "t": "eq",
+        "v": "fit01"
+      },
+      {
+        "t": "eq",
+        "v": "fit02"
+      },
+      {
+        "t": "eq",
+        "v": "pit01"
+      },
+      {
+        "t": "eq",
+        "v": "pit02"
+      },
+      {
+        "t": "eq",
+        "v": "sint"
+      },
+      {
+        "t": "eq",
+        "v": "alarme"
+      },
+      {
+        "t": "eq",
+        "v": "chama_p"
+      },
+      {
+        "t": "eq",
+        "v": "chama_pr"
+      },
+      {
+        "t": "eq",
+        "v": "plc_sts"
+      },
+      {
+        "t": "eq",
+        "v": "chart"
+      }
+    ],
+    "checkall": "true",
+    "outputs": 15,
+    "x": 780,
+    "y": 260,
+    "wires": [
+      [
+        "d5c6781acc92436c"
+      ],
+      [
+        "28cba5dadaf44df8"
+      ],
+      [
+        "9fe12b14ab0340b9"
+      ],
+      [
+        "236b90f46b7842b3"
+      ],
+      [
+        "2b55a37fbba64f83"
+      ],
+      [
+        "e8e040d473444068",
+        "8170d338483e4c6a"
+      ],
+      [
+        "7b9b0eda1f1445d7"
+      ],
+      [
+        "32cfabd1865744e7"
+      ],
+      [
+        "a2e8c64834dd4ec6"
+      ],
+      [
+        "10c4132ea67d466d"
+      ],
+      [
+        "0b3f0473e12b427e"
+      ],
+      [
+        "1489dcd21fac4e17"
+      ],
+      [
+        "7f3c430007f74aa0"
+      ],
+      [
+        "cc3020e23f924adf"
+      ],
+      [
+        "8170d338483e4c6a"
+      ]
+    ]
+  },
+  {
+    "id": "d5c6781acc92436c",
+    "type": "ui_text",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 6,
+    "width": "6",
+    "height": "1",
+    "label": "Estado:",
+    "format": "<b style='font-size:16px;color:#1976D2'>{{msg.payload}}</b>",
+    "layout": "row-left",
+    "x": 1020,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "cc3020e23f924adf",
+    "type": "ui_text",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 7,
+    "width": "6",
+    "height": "1",
+    "label": "",
+    "format": "{{msg.payload}}",
+    "layout": "row-center",
+    "x": 1020,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "1489dcd21fac4e17",
+    "type": "ui_text",
+    "z": "5711b6fb76dd4a69",
+    "group": "3838191184324a6e",
+    "order": 1,
+    "width": "3",
+    "height": "1",
+    "label": "Chama Piloto:",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 1020,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "7f3c430007f74aa0",
+    "type": "ui_text",
+    "z": "5711b6fb76dd4a69",
+    "group": "3838191184324a6e",
+    "order": 2,
+    "width": "3",
+    "height": "1",
+    "label": "Chama Principal:",
+    "format": "{{msg.payload}}",
+    "layout": "row-left",
+    "x": 1020,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "28cba5dadaf44df8",
+    "type": "ui_text",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 10,
+    "width": "12",
+    "height": "8",
+    "label": "Log:",
+    "format": "<pre style='font-size:10px;color:#0f0;background:#111;padding:8px;border-radius:4px;white-space:pre-wrap;max-height:180px;overflow-y:auto'>{{msg.payload}}</pre>",
+    "layout": "col-center",
+    "x": 1020,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "0b3f0473e12b427e",
+    "type": "ui_text",
+    "z": "5711b6fb76dd4a69",
+    "group": "837e8e6c44264066",
+    "order": 1,
+    "width": "6",
+    "height": "1",
+    "label": "",
+    "format": "<span style='font-weight:bold;padding:5px 14px;border-radius:6px;background:{{msg.payload ? \"#c62828\" : \"#2e7d32\"}};color:white'>{{msg.payload ? \"🚨 EMERGÊNCIA ATIVA\" : \"✅ SISTEMA OK\"}}</span>",
+    "layout": "row-center",
+    "x": 1020,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "10c4132ea67d466d",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "c8d8027a9ac3424f",
+    "order": 9,
+    "width": "6",
+    "height": "3",
+    "gtype": "donut",
+    "title": "Tempo Sinterização",
+    "label": "s",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "120",
+    "seg1": "60",
+    "seg2": "100",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "x": 1020,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "8170d338483e4c6a",
+    "type": "ui_chart",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 10,
+    "width": "12",
+    "height": "4",
+    "label": "FIT-01 GLP (Nm³/h)",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "...",
+    "dot": false,
+    "ymin": "0",
+    "ymax": "15",
+    "removeOlder": 1,
+    "removeOlderPoints": "300",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "colors": [
+      "#1f77b4"
+    ],
+    "x": 1020,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "9fe12b14ab0340b9",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 1,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "TIT-01 Refratário",
+    "label": "°C",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "1000",
+    "seg1": "500",
+    "seg2": "800",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "name": "TIT-01 Refratário",
+    "x": 1020,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "236b90f46b7842b3",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 2,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "TIT-02 Ignição",
+    "label": "°C",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "400",
+    "seg1": "100",
+    "seg2": "300",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "name": "TIT-02 Ignição",
+    "x": 1020,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "2b55a37fbba64f83",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 3,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "TIT-03 Cx Vento",
+    "label": "°C",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "1000",
+    "seg1": "600",
+    "seg2": "850",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "name": "TIT-03 Cx Vento",
+    "x": 1020,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "e8e040d473444068",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 4,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "FIT-01 GLP",
+    "label": "Nm³/h",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "15",
+    "seg1": "5",
+    "seg2": "12",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "name": "FIT-01 GLP",
+    "x": 1020,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "7b9b0eda1f1445d7",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 5,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "FIT-02 Ar",
+    "label": "Nm³/h",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "50",
+    "seg1": "20",
+    "seg2": "40",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "name": "FIT-02 Ar",
+    "x": 1020,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "32cfabd1865744e7",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 6,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "PIT-01 GLP",
+    "label": "bar",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "5",
+    "seg1": "1",
+    "seg2": "4",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "name": "PIT-01 GLP",
+    "x": 1020,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "a2e8c64834dd4ec6",
+    "type": "ui_gauge",
+    "z": "5711b6fb76dd4a69",
+    "group": "8e160f0b850c4efa",
+    "order": 7,
+    "width": "3",
+    "height": "3",
+    "gtype": "gage",
+    "title": "PIT-02 Gases",
+    "label": "bar",
+    "format": "{{value}}",
+    "min": "0",
+    "max": "2",
+    "seg1": "0.5",
+    "seg2": "1.5",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "name": "PIT-02 Gases",
+    "x": 1020,
+    "y": 740,
+    "wires": []
+  }
+]

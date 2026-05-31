@@ -1,4 +1,5 @@
 services:
+  # --- BANCO DE DADOS E CACHE ---
   postgres:
     image: postgres:18-alpine
     container_name: postgres-supervisorio
@@ -9,13 +10,15 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d supervisorio"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 5
     restart: always
+    networks:
+      - plc_net
 
   redis:
     image: redis:8.4.2-alpine3.22
@@ -26,13 +29,50 @@ services:
       - redis_data:/data
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 5
     restart: always
+    networks:
+      - plc_net
+
+  # --- SIMULADOR DE CLP ---
+  plc_simulator:
+    build: ./plc_simulator/simulador
+    container_name: plc-simulator
+    ports:
+      - "44818:44818"
+    networks:
+      plc_net:
+        ipv4_address: 192.168.250.10
+    restart: always
+
+  web_interface:
+    build: plc_simulator/web_interface
+    container_name: web-interface
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered_data:/data
+    networks:
+      plc_net:
+        ipv4_address: 192.168.250.20
+    depends_on:
+      - plc_simulator
+    restart: always
+
+
+networks:
+  plc_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.250.0/24
 
 volumes:
   postgres_data:
     driver: local
   redis_data:
+    driver: local
+  nodered_data:
     driver: local

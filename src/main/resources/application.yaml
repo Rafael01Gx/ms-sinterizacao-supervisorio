@@ -1,7 +1,7 @@
 spring:
   application:
     name: supervisorio
-    profile:
+    profiles:
       active: ${SPRING_PROFILES_ACTIVE:dev}
   lifecycle:
     timeout-per-shutdown-phase: 30s
@@ -36,6 +36,17 @@ spring:
       pool:
         enabled: true
 
+  # Jackson — serializa Instant como ISO-8601, não como timestamp numérico
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: America/Sao_Paulo
+
+  # WebSocket — aumenta limites para mensagens grandes (snapshots completos)
+  websocket:
+    message-size-limit: 524288        # 512 KB
+    send-buffer-size-limit: 1048576   # 1 MB
+    send-time-limit: 10000            # 10s
+
 server:
   port: 8080
   compression:
@@ -48,7 +59,28 @@ server:
     key-store-type: PKCS12
 
 plc:
-  address: 128.1.200.50
+  address: 127.0.0.1
+  port: 44818
+  slot: 0
+  backplane: 1
+  timeout: 3000
   polling:
-    process-interval-ms: 500
+    process-interval-ms: 250
     alarm-interval-ms: 250
+  connection-string: logix://${plc.address}:${plc.port}?backplane=${plc.backplane}&slot=${plc.slot}&force-unconnected-operation=true
+
+logging:
+  level:
+    root: INFO
+    org.apache.plc4x: WARN
+    org.springframework.web.socket: INFO
+    org.springframework.messaging: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: when-authorized
